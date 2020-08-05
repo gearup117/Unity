@@ -11,6 +11,7 @@ public class MouseLook : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void Start()
     {

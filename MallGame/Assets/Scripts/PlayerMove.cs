@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         move();
-        jump();
+        //jump();
         applyGravity();
         checkCollision();
         
