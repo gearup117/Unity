@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public Transform[] dropPoint;
     public float pickUpDis;
     public float scaleAmount;
     public LayerMask PickAble;
     GameObject selected = null;
+    private bool isPickedUp;
    // Vector3 scaleRef = new Vector3(0.1f,0.1f,0.1f);
     // Update is called once per frame
 
@@ -23,13 +25,19 @@ public class PickUp : MonoBehaviour
             //scaleRef = selected.transform.localScale;
             var obj = hit.transform;
            
+            //Hovering of mouse over the object
             obj.localScale = new Vector3(scaleAmount, scaleAmount, scaleAmount);
-            // Debug.Log(hit.transform.gameObject.name);
+            if (Input.GetMouseButtonDown(0)) {
+                pickUp(selected);
+            }
+            
             
         }
         else {
-            if (selected) {
+            //Resets the obj
+            if (selected && !isPickedUp) {
 
+       
                // Debug.Log(scaleRef);
                 selected.transform.localScale = new Vector3(1,1,1);
             }   
@@ -39,5 +47,13 @@ public class PickUp : MonoBehaviour
 
 
 
+    }
+    void pickUp(GameObject obj) {
+        isPickedUp = true;
+        obj.GetComponent<CapsuleCollider>().enabled = false;
+        
+        obj.transform.SetParent(gameObject.transform);
+        obj.transform.position = dropPoint[Random.Range(0,dropPoint.Length)].position;
+        obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 }
