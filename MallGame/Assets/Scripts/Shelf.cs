@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    public Grocery grocery;
+    public Grocery[] grocery;
     public Transform[] spwanPoints;
     
      void Start()
@@ -15,7 +15,7 @@ public class Shelf : MonoBehaviour
         for (int i = 1; i <= noObjs; i++)
         {
             int index = Random.Range(0, spwanPoints.Length);
-            Instantiate(grocery.gameObject, spwanPoints[index].position, spwanPoints[index].rotation);
+            Instantiate(grocery[Random.Range(0,grocery.Length)].gameObject, spwanPoints[index].position, spwanPoints[index].rotation);
         }
     }
 }
