@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4693200938576636558}
   - component: {fileID: 331075031647648710}
   - component: {fileID: 9129390632906623527}
+  - component: {fileID: 8719738536867624368}
   m_Layer: 0
   m_Name: Apple
   m_TagString: PickAble
@@ -216,5 +217,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2b81cea0397c30499cad9b9d67f4ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8719738536867624368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693200938576672430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55780518e9cf7d45b4e4ad01178489e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

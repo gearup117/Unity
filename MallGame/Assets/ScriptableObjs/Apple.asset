@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbf061eb7a03f548b6717715dec56bb, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  name: 
-  gameObject: {fileID: 0}
+  name: Apple
+  gameObject: {fileID: 4693200938576672430, guid: 9b65950e27b52884bbd1a33057517688,
+    type: 3}

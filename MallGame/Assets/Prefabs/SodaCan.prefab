@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2923961976185589103}
   - component: {fileID: 2705763407208621183}
   - component: {fileID: 7356795481590905435}
+  - component: {fileID: 2488991184359200041}
   m_Layer: 0
   m_Name: SodaCan
   m_TagString: PickAble
@@ -59,6 +60,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2b81cea0397c30499cad9b9d67f4ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2488991184359200041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218205558762930044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55780518e9cf7d45b4e4ad01178489e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3005328900587629456

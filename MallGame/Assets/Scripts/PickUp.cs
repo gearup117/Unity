@@ -22,12 +22,15 @@ public class PickUp : MonoBehaviour
         if (Physics.Raycast(ray, out hit, pickUpDis, PickAble))
         {
             selected = hit.transform.gameObject;
+
+            selected.GetComponent<HighLightObjects>().isMouseOver = true;
             //scaleRef = selected.transform.localScale;
             var obj = hit.transform;
            
             //Hovering of mouse over the object
-            obj.localScale = new Vector3(scaleAmount, scaleAmount, scaleAmount);
+            //obj.localScale = new Vector3(scaleAmount, scaleAmount, scaleAmount);
             if (Input.GetMouseButtonDown(0)) {
+                selected.GetComponent<HighLightObjects>().isPickedUp = true;
                 pickUp(selected);
             }
             
@@ -37,9 +40,9 @@ public class PickUp : MonoBehaviour
             //Resets the obj
             if (selected && !isPickedUp) {
 
-       
+                selected.GetComponent<HighLightObjects>().isMouseOver = false;
                // Debug.Log(scaleRef);
-                selected.transform.localScale = new Vector3(1,1,1);
+               // selected.transform.localScale = new Vector3(1,1,1);
             }   
         }
         
@@ -54,6 +57,6 @@ public class PickUp : MonoBehaviour
         
         obj.transform.SetParent(gameObject.transform);
         obj.transform.position = dropPoint[Random.Range(0,dropPoint.Length)].position;
-        obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        //obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 }
