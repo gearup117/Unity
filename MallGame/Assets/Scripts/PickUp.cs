@@ -52,7 +52,7 @@ public class PickUp : MonoBehaviour
 
     }
     void pickUp(GameObject obj) {
-        isPickedUp = true;
+        //isPickedUp = true;
         obj.GetComponent<CapsuleCollider>().enabled = false;
         
         obj.transform.SetParent(gameObject.transform);

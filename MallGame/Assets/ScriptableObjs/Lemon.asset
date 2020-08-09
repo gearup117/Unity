@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbf061eb7a03f548b6717715dec56bb, type: 3}
+  m_Name: SodaCan 1
+  m_EditorClassIdentifier: 
+  name: RedBull
+  gameObject: {fileID: 2218205558762930044, guid: a64de81cd5b36b14ab2c8b8a83984e39,
+    type: 3}
