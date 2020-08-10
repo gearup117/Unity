@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fbf061eb7a03f548b6717715dec56bb, type: 3}
-  m_Name: SodaCan 11
+  m_Name: Soil
   m_EditorClassIdentifier: 
-  name: RedBull
-  gameObject: {fileID: 2218205558762930044, guid: a64de81cd5b36b14ab2c8b8a83984e39,
+  name: Soil
+  gameObject: {fileID: 5430892878294381607, guid: 817a0ef0ef3de0b418e9419e54f80601,
     type: 3}

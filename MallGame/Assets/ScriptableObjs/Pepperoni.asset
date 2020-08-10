@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fbf061eb7a03f548b6717715dec56bb, type: 3}
-  m_Name: SodaCan 6
+  m_Name: Pepperoni
   m_EditorClassIdentifier: 
-  name: RedBull
-  gameObject: {fileID: 2218205558762930044, guid: a64de81cd5b36b14ab2c8b8a83984e39,
+  name: Pepperoni
+  gameObject: {fileID: 3221839631134053268, guid: c1c0f0917eeb738448667ff24a350e79,
     type: 3}
