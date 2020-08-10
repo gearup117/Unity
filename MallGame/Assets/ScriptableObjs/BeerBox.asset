@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BeerBox
   m_EditorClassIdentifier: 
   name: BeerBox
-  gameObject: {fileID: 2218205558762930044, guid: a64de81cd5b36b14ab2c8b8a83984e39,
+  gameObject: {fileID: 5494319754346554074, guid: 484dce7392f50a549904843d6d916a04,
     type: 3}

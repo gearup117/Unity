@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Joghurt
   m_EditorClassIdentifier: 
   name: Joghurt
-  gameObject: {fileID: 2218205558762930044, guid: a64de81cd5b36b14ab2c8b8a83984e39,
+  gameObject: {fileID: 4844486692236112010, guid: 18ddd8a2e17ee134787b29b3aac9895d,
     type: 3}

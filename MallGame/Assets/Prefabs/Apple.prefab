@@ -203,10 +203,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.042491205
-  m_Height: 0.09028329
+  m_Radius: 0.039367132
+  m_Height: 0.07873427
   m_Direction: 1
-  m_Center: {x: 0.0025153996, y: 0.025195045, z: 0.00068371894}
+  m_Center: {x: -0.00060866476, y: 0.028684014, z: 0.00068371894}
 --- !u!114 &9129390632906623527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +231,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55780518e9cf7d45b4e4ad01178489e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMouseOver: 0
+  isPickedUp: 0
