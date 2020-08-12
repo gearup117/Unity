@@ -8,7 +8,7 @@ public class SetLayer : MonoBehaviour
     private void Awake()
     {
         gameObject.layer = 11;
-        Debug.Log(LayerMask.LayerToName(gameObject.layer));
+        
     }
     void Start()
     {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5524935074040948121}
   m_Layer: 0
   m_Name: BeerBox
-  m_TagString: Untagged
+  m_TagString: BeerBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

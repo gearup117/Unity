@@ -7,6 +7,34 @@ TagManager:
   - Enemy
   - Ground
   - PickAble
+  - Apple
+  - Banana
+  - Basil
+  - BeerBox
+  - Bottle
+  - Broccoli
+  - Carrot
+  - Cheese
+  - Chips
+  - Cucumber
+  - Joghurt
+  - Leek
+  - Lemon
+  - Meat
+  - MenuBowl
+  - Milk
+  - Mozzarella
+  - Mushroom
+  - Onion
+  - Pear
+  - Pepperoni
+  - SaladBowl
+  - SandWich
+  - SoapBottle
+  - SodaCan
+  - Soil
+  - SprayBottle
+  - Tomato
   layers:
   - Default
   - TransparentFX

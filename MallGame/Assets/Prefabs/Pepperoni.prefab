@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1274903948816312219}
   m_Layer: 0
   m_Name: Pepperoni
-  m_TagString: Untagged
+  m_TagString: Pepperoni
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
