@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PickUp : MonoBehaviour
 {
     //Go to Gare UI text
-    public GameObject tm;
+    public GameObject tm,gate;
     public int noItemPickedUp = 0;
     public Transform[] dropPoint;
     public float pickUpDis;
@@ -21,6 +21,7 @@ public class PickUp : MonoBehaviour
         //Displays the Go to Text  
         if (noItemPickedUp == 11) {
             tm.active = true;
+            gate.active = true;
         }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

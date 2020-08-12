@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] Transform groundCheck,colliderCheck;
     public float jumpHeight = 3f;
-   public LayerMask GroundMask,EnemyMask;
+   public LayerMask GroundMask,EnemyMask,GateMask;
     public float groundRadius = 0.4f;
     public float gravity = -9.81f;
     bool isGrounded,isCollided;
@@ -47,11 +47,18 @@ public class PlayerMove : MonoBehaviour
         controller.Move(move * tempSpeed * Time.deltaTime);
     }
     public void checkCollision() {
+        //checks collision with enemy
         isCollided = Physics.CheckBox(colliderCheck.position, new Vector3(1.5f, 1f, 1.5f),Quaternion.Euler(0,0,0),EnemyMask);
         if (isCollided) {
             loadScene.loadScene("Retry");
         }
+        //Checks collision with gate
+        isCollided = Physics.CheckBox(colliderCheck.position, new Vector3(1.5f, 1f, 1.5f), Quaternion.Euler(0, 0, 0), GateMask);
+        if (isCollided) {
+            Debug.Log("Won");
+        }
     }
+    
     private void applyGravity() {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, GroundMask);
 
