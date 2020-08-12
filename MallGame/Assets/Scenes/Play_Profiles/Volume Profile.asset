@@ -31,8 +31,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   texture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 8400000, guid: ae8223cc485080c4fba1016f9476eb07, type: 2}
     defaultState: 1
   tiling:
     overrideState: 0
