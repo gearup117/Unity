@@ -26,7 +26,7 @@ public class PickList : MonoBehaviour
         if (pickUp.playerHas.Contains(image.sprite.name) && hasGot == false)
         {
             //Inrcemnets the var noOfItemsPicked in PickUp
-            pickUp.noItemPickedUp = 11;
+            pickUp.noItemPickedUp = 1;
             //Changes the aplha value after Picking
             var tempColor = image.color;
             tempColor.a = 0.5f;

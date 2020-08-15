@@ -35,6 +35,7 @@ TagManager:
   - Soil
   - SprayBottle
   - Tomato
+  - BackGroundAudio
   layers:
   - Default
   - TransparentFX

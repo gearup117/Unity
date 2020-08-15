@@ -17,7 +17,8 @@ public class Shelf : MonoBehaviour
             int index = Random.Range(0, spwanPoints.Length);
             if (spwanPoints[index].GetComponent<SpawnPointObj>().isTaken == false)
             {
-                Instantiate(grocery[Random.Range(0, grocery.Length)].gameObject, spwanPoints[index].position, spwanPoints[index].rotation);
+                var a = grocery[Random.Range(0, grocery.Length)].gameObject;
+                Instantiate(a, spwanPoints[index].position, a.transform.rotation);
                 spwanPoints[index].GetComponent<SpawnPointObj>().isTaken = true;
 
             }
