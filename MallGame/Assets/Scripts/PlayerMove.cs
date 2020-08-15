@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
+    public GameObject gate;
+    public Timer timer;
+    public GameObject gameOverOverLay;
     public LoadScene loadScene;
     [SerializeField] CharacterController controller;
     [SerializeField] Transform groundCheck,colliderCheck;
@@ -50,13 +55,24 @@ public class PlayerMove : MonoBehaviour
         //checks collision with enemy
         isCollided = Physics.CheckBox(colliderCheck.position, new Vector3(1.5f, 1f, 1.5f),Quaternion.Euler(0,0,0),EnemyMask);
         if (isCollided) {
-            loadScene.loadScene("Retry");
+            retry();
         }
         //Checks collision with gate
         isCollided = Physics.CheckBox(colliderCheck.position, new Vector3(1.5f, 1f, 1.5f), Quaternion.Euler(0, 0, 0), GateMask);
         if (isCollided) {
-            Debug.Log("Won");
+            timer.reachedGate = true;
+            retry();
         }
+    }
+    public void retry() {
+        timer.pauseTimer = true;
+        gameOverOverLay.active = true;
+        gate.GetComponent<TextMeshProUGUI>().text = "";
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //Pauses the Game
+        Time.timeScale = 0;
+        
     }
     
     private void applyGravity() {

@@ -24,4 +24,10 @@ public class LoadScene : MonoBehaviour
     public void exit() {
         Application.Quit();
     }
+    public void loadSameScene() {
+        Debug.Log("yashd");
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex,LoadSceneMode.Single);
+        
+    }
 }
