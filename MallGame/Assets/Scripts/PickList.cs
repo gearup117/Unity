@@ -29,7 +29,7 @@ public class PickList : MonoBehaviour
             pickUp.noItemPickedUp += 1;
             //Changes the aplha value after Picking
             var tempColor = image.color;
-            tempColor.a = 0.5f;
+            tempColor.a = 0.2f;
             image.color = tempColor;
             
             hasGot = true;
