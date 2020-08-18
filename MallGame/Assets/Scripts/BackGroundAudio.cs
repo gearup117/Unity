@@ -20,17 +20,5 @@ public class BackGroundAudio : MonoBehaviour
             gameObject.GetComponent<AudioSource>().volume = 1f;
         }
     }
-    public void mute1() {
-        var a = GameObject.FindGameObjectWithTag("BackGroundAudio");
-
-        var audio = a.GetComponent<AudioSource>();
-
-        if (audio.volume == 1f)
-        {
-            audio.volume = 0f;
-        }
-        else {
-            audio.volume = 1f;
-        }
-    }
+    
 }
