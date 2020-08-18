@@ -27,7 +27,10 @@ public class MouseLook : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
+            //transform.localRotation = Quaternion.Euler(transform.rotation.x, -170f, 0f);
+            //transform.Rotate(transform.rotation.x, -170f, transform.rotation.z);
             freeRotate(mouseX,mouseY);
+           
         }
         else {
            
@@ -43,11 +46,11 @@ public class MouseLook : MonoBehaviour
         
     }
     void freeRotate(float mouseX,float mouseY) {
-        xRotation -= mouseY;
+        //xRotation -= transform.rotation.x + mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        yRotation += mouseX;
-        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+       // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        //yRotation  +=  mouseX;
+        //yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(xRotation, -170f, 0f);
     }
 }

@@ -18,6 +18,9 @@ public class Timer : MonoBehaviour
         pauseTimer = false;
         tm = GetComponent<TextMeshProUGUI>();
         highScore = PlayerPrefs.GetFloat("highScore", highScore);
+        if (highScore == 0) {
+            highScore = 9999999999999999999999999f;
+        }
     }
 
     // Update is called once per frame
