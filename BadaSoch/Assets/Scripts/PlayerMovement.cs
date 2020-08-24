@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-
+    public Animator anim;
     float xRotation, yRotation;
     [SerializeField] float mouseSensitivity = 100f;
     public GameObject body;
@@ -27,14 +27,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
+        if (!Input.GetMouseButton(0))
+        {
+            move();
+        }
         jump();
         look();
+        shoot();
         applyGravity();
         
 
     }
-    
+    private void shoot() {
+        
+        anim.SetBool("shoot",Input.GetMouseButton(0));
+
+    }
     private void look() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane playerPlane = new Plane(Vector3.up, Vector3.zero);
@@ -52,16 +60,22 @@ public class PlayerMovement : MonoBehaviour
         float tempSpeed;
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        anim.SetFloat("vertical", z);
+        Debug.Log(x);
+        anim.SetFloat("horizontal", x);
         Vector3 move = transform.right * x + transform.forward * z;
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            anim.SetBool("run", true);
             tempSpeed = sprint;
 
         }
         else
         {
+            anim.SetBool("run", false);
             tempSpeed = speed;
         }
+        
 
         controller.Move(move * tempSpeed * Time.deltaTime);
     }
