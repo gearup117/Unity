@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyFollow : MonoBehaviour
 {
+    public GameObject blood,bloodPoint;
     public float health;
     public NavMeshAgent navMesh;
     public Animator anim;
@@ -46,6 +47,7 @@ public class EnemyFollow : MonoBehaviour
     {
         if (collision.collider.tag == "Bullet") {
             Destroy(collision.gameObject);
+            Instantiate(blood, bloodPoint.transform.position,bloodPoint.transform.rotation);
             health -= 1f;
             
         }

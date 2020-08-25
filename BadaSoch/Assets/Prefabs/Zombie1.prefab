@@ -559,6 +559,7 @@ Transform:
   m_Children:
   - {fileID: 4895391061258900612}
   - {fileID: 4895078013599566826}
+  - {fileID: 4904420743753550668}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -623,6 +624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8217ef499910e7e44a2589326bce46e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 5250910965893610289, guid: b9a1b0875fdbb084c8de78bd154b9ca0, type: 3}
+  bloodPoint: {fileID: 6364254395661994252}
   health: 2
   navMesh: {fileID: 4899495452095603437}
   anim: {fileID: 4804664680519176550}
@@ -1100,3 +1103,33 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.22611654, y: 0.003887251, z: 0}
     m_Extent: {x: 0.5238398, y: 0.20348991, z: 0.30575648}
   m_DirtyAABB: 0
+--- !u!1 &6364254395661994252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4904420743753550668}
+  m_Layer: 0
+  m_Name: BloodEffectPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4904420743753550668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364254395661994252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.494, z: 0.003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4895871715005309740}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
