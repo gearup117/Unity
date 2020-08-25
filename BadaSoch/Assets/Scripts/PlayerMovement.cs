@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         
         
         
-        Debug.Log(x);
+        
 
         
 
