@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        if ((Input.GetKey(KeyCode.W)) &&  (Input.GetKey(KeyCode.LeftShift)))
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) &&  (Input.GetKey(KeyCode.LeftShift)))
         {
             
             
