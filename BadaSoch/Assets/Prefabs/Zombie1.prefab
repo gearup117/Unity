@@ -590,7 +590,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4898434249470411400}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -624,6 +624,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8217ef499910e7e44a2589326bce46e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPointIndex: 0
+  viewRadius: 5
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
   blood: {fileID: 5250910965893610289, guid: b9a1b0875fdbb084c8de78bd154b9ca0, type: 3}
   bloodPoint: {fileID: 6364254395661994252}
   health: 2
@@ -640,7 +653,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
-  m_Acceleration: 8
+  m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 50
   m_StoppingDistance: 0
