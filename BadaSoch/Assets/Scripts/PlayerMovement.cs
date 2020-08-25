@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    Vector3 pointToLookAt;
     public Animator anim;
     float xRotation, yRotation;
     [SerializeField] float mouseSensitivity = 100f;
@@ -27,12 +27,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        look();
         if (!Input.GetMouseButton(0))
         {
             move();
         }
         jump();
-        look();
+        
         shoot();
         applyGravity();
         
@@ -47,11 +48,13 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane playerPlane = new Plane(Vector3.up, Vector3.zero);
         float hitDist;
-        if (playerPlane.Raycast(ray,out hitDist)) {
-            Vector3 pointToLookAt = ray.GetPoint(hitDist);
-            Debug.DrawLine(ray.origin, pointToLookAt,Color.blue);
-            body.transform.LookAt(new Vector3(pointToLookAt.x,transform.position.y,pointToLookAt.z));
+        if (playerPlane.Raycast(ray, out hitDist))
+        {
+            pointToLookAt = ray.GetPoint(hitDist);
+            Debug.DrawLine(ray.origin, pointToLookAt, Color.blue);
+            body.transform.LookAt(new Vector3(pointToLookAt.x, transform.position.y, pointToLookAt.z));
         }
+
 
     }
 
@@ -60,27 +63,75 @@ public class PlayerMovement : MonoBehaviour
         float tempSpeed;
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        anim.SetFloat("vertical", z);
+        animate(x,z);
+        Vector3 move =(transform.right) * x + ( transform.forward) * z;
+        
+        
+        
         Debug.Log(x);
-        anim.SetFloat("horizontal", x);
-        Vector3 move = transform.right * x + transform.forward * z;
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        
+
+        if ((Input.GetKey(KeyCode.W)) &&  (Input.GetKey(KeyCode.LeftShift)))
         {
+            
+            
             anim.SetBool("run", true);
+            anim.SetFloat("vertical", 0);
+            anim.SetFloat("horizontal", 0);
             tempSpeed = sprint;
+            //pointToLookAt = pointToLookAt.normalized;
+            //move = transform.right * pointToLookAt.x + transform.forward * pointToLookAt.z;
+            //controller.Move(move * sprint * Time.deltaTime);
+            //transform.Translate(new Vector3(pointToLookAt.x, transform.position.y, pointToLookAt.z) * sprint * Time.deltaTime);
 
         }
         else
         {
             anim.SetBool("run", false);
             tempSpeed = speed;
+            
         }
-        
-
         controller.Move(move * tempSpeed * Time.deltaTime);
+
+
     }
 
-   
+    private void animate(float x,float z) {
+        anim.SetFloat("vertical", z);
+        anim.SetFloat("horizontal", x);
+        ///Pseudo code
+        Vector3 Dir = pointToLookAt - transform.position;
+        //IDk how this works
+        if (Dir.x < 0 && (Dir.x < -Dir.z))
+        {
+
+            anim.SetFloat("vertical", -x);
+            anim.SetFloat("horizontal", -z);
+        }
+        else
+        if (Dir.x > 0 && (Dir.x > -Dir.z))
+        {
+            anim.SetFloat("vertical", x);
+            anim.SetFloat("horizontal", z);
+        }
+
+
+        else
+        {
+            if (Dir.z > 0)
+            {
+                anim.SetFloat("vertical", z);
+                anim.SetFloat("horizontal", x);
+            }
+            else
+             if (Dir.z < 0)
+            {
+                anim.SetFloat("vertical", -z);
+                anim.SetFloat("horizontal", -x);
+            }
+        }
+    }
 
     private void applyGravity()
     {
