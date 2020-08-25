@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Vector3 pointToLookAt;
+    
+    public Vector3 pointToLookAt;
     public Animator anim;
     float xRotation, yRotation;
     [SerializeField] float mouseSensitivity = 100f;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         look();
         if (!Input.GetMouseButton(0))
         {
@@ -74,16 +76,30 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) &&  (Input.GetKey(KeyCode.LeftShift)))
         {
-            
-            
+            //runleft
+            if (Input.GetKey(KeyCode.A)) {
+                body.transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
+            //run top
+            if (Input.GetKey(KeyCode.W))
+            {
+                body.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            //run right
+            if (Input.GetKey(KeyCode.D))
+            {
+                body.transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            //run down
+            if (Input.GetKey(KeyCode.S))
+            {
+                body.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
             anim.SetBool("run", true);
             anim.SetFloat("vertical", 0);
             anim.SetFloat("horizontal", 0);
             tempSpeed = sprint;
-            //pointToLookAt = pointToLookAt.normalized;
-            //move = transform.right * pointToLookAt.x + transform.forward * pointToLookAt.z;
-            //controller.Move(move * sprint * Time.deltaTime);
-            //transform.Translate(new Vector3(pointToLookAt.x, transform.position.y, pointToLookAt.z) * sprint * Time.deltaTime);
+            
 
         }
         else
