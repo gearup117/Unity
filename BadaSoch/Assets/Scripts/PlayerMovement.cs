@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
+    private int health;
+    public TextMeshProUGUI healthText;
     public Vector3 pointToLookAt;
     public Animator anim;
     float xRotation, yRotation;
@@ -22,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        health = 100;
+        InvokeRepeating("decreaseHealth", 0.5f, 0.5f);
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         look();
-        if (!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0) && !anim.GetBool("reload"))
         {
             move();
         }
@@ -42,8 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
     private void shoot() {
-        
-        anim.SetBool("shoot",Input.GetMouseButton(0));
+
+        if (!anim.GetBool("reload"))
+        {
+            anim.SetBool("shoot", Input.GetMouseButton(0));
+        }
 
     }
     private void look() {
@@ -63,56 +69,71 @@ public class PlayerMovement : MonoBehaviour
     private void move()
     {
         float tempSpeed;
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        animate(x,z);
-        Vector3 move =(transform.right) * x + ( transform.forward) * z;
-        
-        
-        
-        
-
-        
-
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) &&  (Input.GetKey(KeyCode.LeftShift)))
+        if (!anim.GetBool("reload"))
         {
-            //runleft
-            if (Input.GetKey(KeyCode.A)) {
-                body.transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            //run top
-            if (Input.GetKey(KeyCode.W))
-            {
-                body.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-            //run right
-            if (Input.GetKey(KeyCode.D))
-            {
-                body.transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            //run down
-            if (Input.GetKey(KeyCode.S))
-            {
-                body.transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            anim.SetBool("run", true);
-            anim.SetFloat("vertical", 0);
-            anim.SetFloat("horizontal", 0);
-            tempSpeed = sprint;
-            
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            animate(x, z);
+            Vector3 move = (transform.right) * x + (transform.forward) * z;
 
+
+
+
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && (Input.GetKey(KeyCode.LeftShift)) && !anim.GetBool("relaod"))
+            {
+
+                //runleft
+                if (Input.GetKey(KeyCode.A))
+                {
+                    body.transform.rotation = Quaternion.Euler(0, -90, 0);
+                }
+                //run top
+                if (Input.GetKey(KeyCode.W))
+                {
+                    body.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                //run right
+                if (Input.GetKey(KeyCode.D))
+                {
+                    body.transform.rotation = Quaternion.Euler(0, 90, 0);
+                }
+                //run down
+                if (Input.GetKey(KeyCode.S))
+                {
+                    body.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+                anim.SetBool("run", true);
+                anim.SetFloat("vertical", 0);
+                anim.SetFloat("horizontal", 0);
+                tempSpeed = sprint;
+
+
+            }
+            else
+            {
+                anim.SetBool("run", false);
+                tempSpeed = speed;
+
+            }
+            controller.Move(move * tempSpeed * Time.deltaTime);
         }
-        else
-        {
-            anim.SetBool("run", false);
-            tempSpeed = speed;
-            
-        }
-        controller.Move(move * tempSpeed * Time.deltaTime);
 
 
     }
+    void decreaseHealth() {
+        if (anim.GetBool("run") && health > 0)
+        {
+            health--;
+            
+        }
+        else if(health < 100)
+        {
+            health++;
+            
 
+        }
+        healthText.text = health.ToString();
+    }
     private void animate(float x,float z) {
         anim.SetFloat("vertical", z);
         anim.SetFloat("horizontal", x);
@@ -155,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
+            
             velocity.y = -2f;
         }
         velocity.y += gravity * Time.deltaTime;
@@ -166,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            
             //Physics formula for jump
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }

@@ -608,10 +608,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 1
+  m_Radius: 0.27745247
+  m_Height: 1.153201
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0.004594803, y: 0.49551898, z: 0}
 --- !u!114 &4899495452095603438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,9 +624,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8217ef499910e7e44a2589326bce46e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chasePlayerSpeed: 0
+  scaleFactor: 0.2
+  playerKilled: {fileID: 0}
   patrolPointIndex: 0
   viewRadius: 5
   patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -672,10 +681,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
-  m_Acceleration: 3
+  m_Acceleration: 100000
   avoidancePriority: 50
-  m_AngularSpeed: 50
-  m_StoppingDistance: 0
+  m_AngularSpeed: 200
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
