@@ -5,8 +5,8 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private int health;
-    public TextMeshProUGUI healthText;
+    //public int health;
+    //public TextMeshProUGUI healthText;
     public Vector3 pointToLookAt;
     public Animator anim;
     float xRotation, yRotation;
@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
-        InvokeRepeating("decreaseHealth", 0.5f, 0.5f);
+        //health = 100;
+        //InvokeRepeating("decreaseHealth", 0.5f, 0.5f);
     }
 
     // Update is called once per frame
@@ -39,19 +39,19 @@ public class PlayerMovement : MonoBehaviour
         }
         jump();
         
-        shoot();
+        //shoot();
         applyGravity();
         
 
     }
-    private void shoot() {
+    //private void shoot() {
 
-        if (!anim.GetBool("reload"))
-        {
-            anim.SetBool("shoot", Input.GetMouseButton(0));
-        }
+    //    if (!anim.GetBool("reload"))
+    //    {
+    //        anim.SetBool("shoot", Input.GetMouseButton(0));
+    //    }
 
-    }
+    //}
     private void look() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane playerPlane = new Plane(Vector3.up, Vector3.zero);
@@ -120,20 +120,20 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    void decreaseHealth() {
-        if (anim.GetBool("run") && health > 0)
-        {
-            health--;
+    //void decreaseHealth() {
+    //    if (anim.GetBool("run") && health > 0)
+    //    {
+    //        health--;
             
-        }
-        else if(health < 100)
-        {
-            health++;
+    //    }
+    //    else if(health < 100)
+    //    {
+    //        health++;
             
 
-        }
-        healthText.text = health.ToString();
-    }
+    //    }
+    //    healthText.text = health.ToString();
+    //}
     private void animate(float x,float z) {
         anim.SetFloat("vertical", z);
         anim.SetFloat("horizontal", x);

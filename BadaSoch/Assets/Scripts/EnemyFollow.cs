@@ -36,9 +36,7 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Makes EnemyHarder
-        transform.localScale = playerKilled.scaleEnemy;
-        navMesh.speed = playerKilled.speed;
+        
         
         scaleZombie();
         //Makes EnemyHarder
@@ -88,7 +86,11 @@ public class EnemyFollow : MonoBehaviour
             setNewPatrolPoint();
 
         }
-        navMesh.SetDestination(patrolPoints[patrolPointIndex].position);
+        
+        
+            navMesh.SetDestination(patrolPoints[patrolPointIndex].position);
+        
+        
     }
     private void OnDrawGizmosSelected()
     {
@@ -116,9 +118,19 @@ public class EnemyFollow : MonoBehaviour
         }
     }
     void scaleZombie() {
+        //Makes EnemyHarder
+        // transform.localScale = playerKilled.scaleEnemy;
+        if (!anim.GetBool("Death"))
+        {
+            navMesh.speed = playerKilled.speed;
+        }
+        else {
+            navMesh.speed = 0f;
+        }
+    
         if (playerKilled.zombieKilledNo >= playerKilled.amountForLevel) {
             // transform.localScale += new Vector3(2f, 2f, 2f);
-            playerKilled.scaleEnemy += new Vector3(scaleFactor, scaleFactor, scaleFactor);
+            //playerKilled.scaleEnemy += new Vector3(scaleFactor, scaleFactor, scaleFactor);
             playerKilled.chaseSpeed++;
             playerKilled.speed++;
             playerKilled.amountForLevel += 5;

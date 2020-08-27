@@ -5,18 +5,20 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
-    
+    PlayerMovement playerMovement;
     public Animator anim;
     public TextMeshProUGUI bulletNoText,totalMagzine;
     public Transform gunPoint;
     public int bulletNo;
     public int totalBullet;
     public GameObject bullet;
+    public Transform crossHair;
     float shotCounter;
     public float timeBetweenShots;
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement = gameObject.GetComponentInParent<PlayerMovement>();
         bulletNoText.text = bulletNo.ToString();
         totalMagzine.text = totalBullet.ToString();
     }
@@ -24,8 +26,10 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButton(0) && Time.time >= shotCounter && bulletNo >0 && !anim.GetBool("reload") ) {
+        shoot();
+        setCrossHair();
+        //shoot
+        if (Input.GetMouseButton(0) && Time.time >= shotCounter && bulletNo >0 &&  !anim.GetBool("reload") ) {
             shotCounter = Time.time + timeBetweenShots;
             bulletNo--;
             bulletNoText.text = bulletNo.ToString();
@@ -37,18 +41,48 @@ public class Gun : MonoBehaviour
             anim.SetFloat("horizontal", 0f);
             anim.SetBool("reload", true);
             
-            Invoke("resetMagzine", 2f);
+            Invoke("reload", 2f);
         }
        
         
     }
-    void resetMagzine() {
-        var usedBullet = 30 - bulletNo;
+    private void shoot()
+    {
 
-        totalBullet = totalBullet - (30 - bulletNo);
-        totalMagzine.text = totalBullet.ToString();
-        bulletNo = 30;
-        bulletNoText.text = bulletNo.ToString();
-        anim.SetBool("reload", false);
+        if (!anim.GetBool("reload"))
+        {
+            anim.SetBool("shoot", Input.GetMouseButton(0));
+        }
+        if (Input.GetMouseButtonUp(0) || bulletNo <=0) {
+            anim.SetBool("shoot", false);
+        }
+
     }
+    void reload() {
+        if (totalBullet > 0)
+        {
+            var usedBullet = 30 - bulletNo;
+
+            totalBullet = totalBullet - (30 - bulletNo);
+
+
+            totalMagzine.text = totalBullet.ToString();
+            bulletNo = 30;
+            bulletNoText.text = bulletNo.ToString();
+        }
+
+        else
+        {
+            totalMagzine.text = "0";
+        }
+            
+            anim.SetBool("reload", false);
+        
+    }
+    void setCrossHair() {
+        float x = Mathf.Clamp(playerMovement.pointToLookAt.x, crossHair.position.x - 5, crossHair.position.x+ 5);
+        float z = Mathf.Clamp(playerMovement.pointToLookAt.z, crossHair.position.z - 5, crossHair.position.z + 5);
+        crossHair.position = new Vector3(x, crossHair.position.y, z);
+    }
+    
 }
